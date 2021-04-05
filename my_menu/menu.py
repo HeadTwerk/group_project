@@ -2,6 +2,12 @@
 
 from my_menu.items import *
 import csv
+import os
+import time
+import librosa
+from gtts import gTTS
+from playsound import playsound
+
 
 # list of all item types
 drinks = []
@@ -54,8 +60,30 @@ def show_menu():
         else:
             print("\tChicken")
         for j in menu1[i]:
-            print("{} {}".format(j.name, j.cost))
+            print(f"{j.name} {j.cost}")
 
+# speak out the menu
+def say_menu(file = "my_menu\\menu.csv"):
+    with open(file) as src:
+        _reader = csv.reader(src)
+        _header = next(_reader)
+
+        if not os.path.isfile("audio_files\\menu_item.mp3"):
+            print("fetching menu_item.mp3")
+            # create the required menu audio
+            my_str = "Hi, On today's menu we have ,"
+            for row in _reader:
+                my_str = my_str+", {}".format(row[1])
+            audio = gTTS(my_str)
+            audio.save("audio_files\\menu_item.mp3")
+        else:
+            print("menu_item.mp3 exists")
+
+        # play it
+        time.sleep(.2)
+        print("speaking menu:")
+        playsound("audio_files\\menu_item.mp3")
+        time.sleep(librosa.get_duration(filename="audio_files\\menu_item.mp3"))
 
 # add a new item to the menu
 def addItem(i, name, cost, attri):
@@ -71,10 +99,12 @@ def addItem(i, name, cost, attri):
         chicken.append(Chicken(name, cost, attri))
     else:
         raise Exception("---INVALID ITEM TYPE---")
+    print(f"added {name}")
 
 
 # remove an exiting item from the loaded menu[]
 def remItems(i, name):
     for j in range(len(menu1[i - 1]) - 1):
-        if menu1[i - 1][j].name == name:
+        if list(menu1[i - 1])[j].name == name:
             menu1[i - 1].pop(j)
+            print("removed {name}")

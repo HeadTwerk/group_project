@@ -23,4 +23,5 @@ if __name__ == "__main__":
     take_order("Mango Juice")
     """
 
-    voice_input()
+    #say_menu()
+    #voice_input()
