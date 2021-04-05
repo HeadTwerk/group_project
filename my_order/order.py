@@ -21,10 +21,12 @@ def take_order(name, file="my_order\\orders.csv"):
         _writer = csv.writer(file_w)
         _writer.writerow([name])
 
+# to recognise customer voice input, process it and return
 def voice_input():
     r = sr.Recognizer()
 
     with sr.Microphone() as source:
+        print("calibrating for noise")
         r.adjust_for_ambient_noise(source, duration=int(librosa.get_duration(filename="my_order\\greet.wav")))
         r.dynamic_energy_threshold = True
         os.system("my_order\\greet.wav")
