@@ -18,7 +18,9 @@ menu1 = [
     paneer,
     chicken,
 ]
-
+# We already have menu.csv as a file. For every operation, to extract data from a csv is not as easy and worth the time
+# While on the other hand a database system is an overkill for small projects as ours
+# Therefore we will simply load the data from csv to a runtime list or dictionary
 
 # read menu from file and load it on runtime List menu[]
 def _load_data(file):
@@ -33,7 +35,7 @@ def _load_data(file):
                 # pass values of List[str] row to addItems()
                 addItem(ord(row[0]) - 48, row[1], row[2], row[3])
 
-
+# print different types of Items
 def show_item_list():
     print("1. Drinks\n2. Rice\n3. Chappati\n4. Paneer\n5. Chicken\n")
 
