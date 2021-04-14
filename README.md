@@ -20,3 +20,4 @@
     * gtts
     * librosa
     * speech_recognition (if not already installed)
+    * playsound

@@ -2,6 +2,7 @@
 __pycache__
 **/__pycache__
 **/*.wav
+**/*.mp3
 **/*.zip
 **/*.7z
 **/*.tar
