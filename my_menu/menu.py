@@ -4,7 +4,7 @@ from my_menu.items import *
 import csv
 import os
 import time
-import librosa
+import librosa  # install ffmpeg
 from gtts import gTTS
 from playsound import playsound
 
@@ -15,7 +15,7 @@ rice = []
 chappatis = []
 paneer = []
 chicken = []
-
+menu = []
 # menu for all items
 menu1 = [
     drinks,
@@ -71,7 +71,7 @@ def say_menu(file = "my_menu\\menu.csv"):
         if not os.path.isfile("audio_files\\menu_item.mp3"):
             print("fetching menu_item.mp3")
             # create the required menu audio
-            my_str = "Hi, On today's menu we have ,"
+            my_str = "On today's menu we have ,"
             for row in _reader:
                 my_str = my_str+", {}".format(row[1])
             audio = gTTS(my_str)
@@ -80,10 +80,9 @@ def say_menu(file = "my_menu\\menu.csv"):
             print("menu_item.mp3 exists")
 
         # play it
-        time.sleep(.2)
         print("speaking menu:")
         playsound("audio_files\\menu_item.mp3")
-        time.sleep(librosa.get_duration(filename="audio_files\\menu_item.mp3"))
+        time.sleep(librosa.get_duration(filename="audio_files\\menu_item.mp3")-1)
 
 # add a new item to the menu
 def addItem(i, name, cost, attri):
