@@ -7,7 +7,7 @@ import speech_recognition as sr
 import librosa  # install ffmpeg
 from gtts import gTTS
 from playsound import playsound
-from my_menu.menu import menu1
+from my_menu.menu import menu1, say_menu
 
 # list of insignificant words, mostly catering to ordering terminology
 insig_list = ['is', 'i', 'want', 'plate', 'glass', 'scoop', 'serving', 'like', 'and']
@@ -59,13 +59,13 @@ def voice_input():
         r.dynamic_energy_threshold = True
         # print("--calibrated")
 
-        """
+
         # greeting
         playsound("audio_files\\greet.mp3")
         print("greetings")
         time.sleep(librosa.get_duration(filename="audio_files\\greet.mp3")-2)
         say_menu()
-        """
+
 
         # Listening to customer speak
         input_as_text = ""

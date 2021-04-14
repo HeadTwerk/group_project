@@ -73,7 +73,7 @@ def say_menu(file = "my_menu\\menu.csv"):
             # create the required menu audio
             my_str = "On today's menu we have ,"
             for row in _reader:
-                my_str = my_str+", {}".format(row[1])
+                my_str = my_str+" {}".format(row[1])
             audio = gTTS(my_str)
             audio.save("audio_files\\menu_item.mp3")
         else:

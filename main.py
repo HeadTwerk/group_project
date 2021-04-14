@@ -5,7 +5,7 @@ from my_order.order import *
 if __name__ == "__main__":
     print("Hello Project")
 
-    #show_item_list()
+    show_item_list()
 
     """
     print("Adding elements")
@@ -20,7 +20,8 @@ if __name__ == "__main__":
     
     show_menu()
     #take_order(order_list=[(2, 'apple juice')])
-    #say_menu()
+    
     #voice_input()
     """
+    #say_menu()
     take_order()
