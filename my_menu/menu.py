@@ -15,7 +15,7 @@ rice = []
 chappatis = []
 paneer = []
 chicken = []
-menu = []
+
 # menu for all items
 menu1 = [
     drinks,
