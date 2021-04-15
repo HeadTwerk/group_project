@@ -11,7 +11,7 @@ from my_menu.menu import menu1, say_menu
 import re
 
 # list of insignificant words, mostly catering to ordering terminology
-insig_list = ['no', 'is', 'i', 'want', 'plate', 'glass', 'scoop', 'serving', 'like', 'and', "that's all", "nothing else"]
+insig_list = ['is', 'i', 'want', 'plate', 'glass', 'scoop', 'serving', 'like', 'and', "that's all", "nothing else"]
 int_names = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
 # create an all lower case list of all items
 def create_menu():
@@ -56,7 +56,7 @@ def voice_input():
 
         # adjusting and calibrating for background noise
         print("calibrating for noise")
-        r.adjust_for_ambient_noise(source, duration=3)
+        r.adjust_for_ambient_noise(source, duration=2)
         r.dynamic_energy_threshold = True
         print("--calibrated")
 
@@ -74,26 +74,24 @@ def voice_input():
         while True:
             print("listening . . . ")
             try:
-                audio = r.listen(source, timeout=1)
+                audio = r.listen(source)
                 # and recognizing
                 print("recognizing...")
-                input_as_text += r.recognize_google(audio, language="en-IN") + " "
+                input_as_text = confirm + input_as_text + r.recognize_google(audio, language="en-IN") + " "
                 print(input_as_text)
-                if re.search("no\W\s|that's all|nothing else", input_as_text.lower()):
-                    break
+                if re.search("that's all|nothing else", input_as_text): break
 
                 # confirm order
                 playsound("audio_files\\anything_else.mp3")
                 print("anything else ?")
-                continue
-                """audio = r.listen(source)
+                audio = r.listen(source)
                 confirm = r.recognize_google(audio)
                 print(f"\t{confirm}")
                 # if nothing else, then break
-                if not re.search("no\W\s|that's all|nothing else", confirm.lower()):
+                if not re.search("no\W\s|that's all|nothing else|long live the queen", confirm.lower()):
                     continue
                 # else
-                break"""
+                break
             except:
                 # if nothing ineligible was detected try again
                 continue

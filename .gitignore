@@ -6,4 +6,5 @@ __pycache__
 **/*.zip
 **/*.7z
 **/*.tar
+**/*.pptx
 my_order/FFmpeg
