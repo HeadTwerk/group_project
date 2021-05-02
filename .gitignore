@@ -8,3 +8,4 @@ __pycache__
 **/*.tar
 **/*.pptx
 my_order/FFmpeg
+example_runs

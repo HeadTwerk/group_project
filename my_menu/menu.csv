@@ -8,9 +8,12 @@ iid,name,cost,atrri1
 2,Schezwan Rice,80,medium
 2,Chicken Biryani,120,long
 2,Veg Biryani,100,long
+2,Biryani,100,long
 3,Rumali Roti,35,soft
 3,Tandoori,25,tandoor
 3,Aaloo Paratha,38,filling
+3,Aloo Paratha,38,filling
+3,Aalu Paratha,38,filling
 3,Paneer Paratha,45,filling
 4,Kadhai Paneer,70,gravy
 4,Malai Paneer,82,creamed
